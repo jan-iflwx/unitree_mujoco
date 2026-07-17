@@ -119,6 +119,39 @@ python3 ./test/test_unitree_sdk2.py
 ```
 The program will output the robot's pose and position information in the simulator, and each motor of the robot will continuously output 1Nm of torque.
 
+**Joystick Test**:
+Keep `USE_JOYSTICK = 1` in `./simulate_python/config.py` to enable joystick and then run
+
+```bash
+cd ./simulate_python
+python3 ./unitree_mujoco.py
+```
+
+then in a new terminal, run:
+
+```bash
+cd ./simulate_python/test
+# 验证手柄可用
+python3 ./test_xbox_read.py
+# 验证策略可控
+python3 ./test_xbox_control.py
+```
+
+**Script Test**:
+Apply `USE_JOYSTICK = 0` in `./simulate_python/config.py` to disable joystick and then run
+
+```bash
+cd ./simulate_python
+python3 ./unitree_mujoco.py
+```
+
+then in a new terminal, run:
+
+```bash
+cd ./example/python
+python3 stand_go2.py
+```
+
 **Note:** The testing program sends the unitree_go message. If you want to test G1 robot, you need to modify the program to use the unitree_hg message.
 
 
